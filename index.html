@@ -13,11 +13,6 @@
         <button class=".btn newBook">New</button>
     </div>
     <div id="books">
-        <div class="book">
-            <p class="info title">Book Title</p>
-            <p class="info year">2022</p>
-            <p class="info pages">150</p>
-        </div>
     </div>
 
     <script>
@@ -30,6 +25,14 @@
             this.year = year;
             this.read = read;
         };
+
+        let test1 = new Book('Lord of the Rings', 100, 2021, true);
+        let test2 = new Book('Twilight', 104, 1996, true);
+
+        myLibrary.push(test1);
+        myLibrary.push(test2);
+
+        displayBookCards(myLibrary);
 
         function createBookCard(book) {
             let card = document.createElement('div');
@@ -44,8 +47,16 @@
                 card.appendChild(info);
             }
 
-            books.appendChild(card);
+            return card;
         };
+
+        function displayBookCards(currentLib) {
+            books.innerHTML = ''
+            for (book in currentLib) {
+                currentCard = createBookCard(currentLib[book]);
+                books.appendChild(currentCard);
+            }
+        }
     </script>
 </body>
 </html>
