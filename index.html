@@ -12,12 +12,40 @@
         <h1 class="logo">BookLog</h1>
         <button class=".btn newBook">New</button>
     </div>
-    <div class="books">
+    <div id="books">
         <div class="book">
-            <h1 class="info title">Book Title</h1>
+            <p class="info title">Book Title</p>
             <p class="info year">2022</p>
             <p class="info pages">150</p>
         </div>
     </div>
+
+    <script>
+        let myLibrary = [];
+        const books = document.getElementById('books');
+
+        function Book(title, pages, year, read) {
+            this.title = title;
+            this.pages = pages;
+            this.year = year;
+            this.read = read;
+        };
+
+        function createBookCard(book) {
+            let card = document.createElement('div');
+            card.classList.add('book');
+            
+            for (prop in book) {
+                let info = document.createElement('p');
+                info.classList.add('info');
+                info.classList.add(prop);
+                info.textContent = book[prop];
+
+                card.appendChild(info);
+            }
+
+            books.appendChild(card);
+        };
+    </script>
 </body>
 </html>
