@@ -1,0 +1,27 @@
+body {
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 5px;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(255, 235, 205, 0.767);
+    margin: 0;
+}
+
+.newBook {
+    display: inline-flex;
+    justify-content: center;
+    background-color: blanchedalmond;
+    border: none;
+    padding: 20px;
+    width: 5rem;
+    max-height: 2rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 9px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.378);
+}
