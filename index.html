@@ -14,7 +14,7 @@
     </div>
     <div id="books">
     </div>
-    <div class="overlay active" id = "overlay">
+    <div class="overlay" id = "overlay">
         <div class = "prompt">
             <p class="message">Add new book</p>
             <input type="text" required name = "book" placeholder="Book">
@@ -31,7 +31,18 @@
     <script>
         let myLibrary = [];
         const books = document.getElementById('books');
-        const newBook = document.getElementById
+        const newBook = document.getElementById('newBook');
+        const overlay = document.getElementById('overlay');
+
+        newBook.addEventListener("click", () => {
+            overlay.classList.toggle("active");
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+                overlay.classList.toggle("active");
+            }
+        });
 
         function Book(title, pages, year, read) {
             this.title = title;

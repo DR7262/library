@@ -26,6 +26,16 @@ body {
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.378);
 }
 
+.btn:hover {
+    background-color: rgb(253, 223, 177);
+    scale: 102%;
+}
+
+.btn:active {
+    scale: 99%;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.378);
+}
+
 #books {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -39,6 +49,7 @@ body {
 }
 
 .overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
