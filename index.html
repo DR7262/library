@@ -18,9 +18,12 @@
         <div class = "prompt">
             <p class="message">Add new book</p>
             <input type="text" required name = "book" placeholder="Book">
+            <input type="text" required name = "author" placeholder="Author">
             <input type="number" required name = "year" placeholder="Year">
             <input type="number" required name = "pages" placeholder="Pages">
-            <input type="text" required name = "read" placeholder="Read?">
+                <label for="read" class="readStatus"> Have I read it?
+                    <input type="checkbox" required name = "read" placeholder="Read?">
+                </label>
             <button class = "btn">Confirm</button>
         </div>
     </div>
