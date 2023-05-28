@@ -41,6 +41,8 @@
         const newBookPages = document.getElementById('newBookPages');
         const newBookReadStatus = document.getElementById('newBookReadStatus');
 
+        const newBookData = [newBookTitle, newBookAuthor, newBookPages, newBookYear, newBookReadStatus]
+
         newBook.addEventListener("click", () => {
             overlay.classList.toggle("active");
         });
@@ -56,6 +58,7 @@
             myLibrary.push(newBook);
             overlay.classList.toggle("active");
             displayBookCards(myLibrary);
+            clearNewBookForm();
         });
 
         function Book(title, author, pages, year, read) {
@@ -95,6 +98,12 @@
             for (book in currentLib) {
                 currentCard = createBookCard(currentLib[book]);
                 books.appendChild(currentCard);
+            }
+        }
+
+        function clearNewBookForm() {
+            for (let i = 0; i < newBookData.length; i++) {
+                newBookData[i].value = '';
             }
         }
     </script>
