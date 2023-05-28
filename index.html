@@ -17,14 +17,14 @@
     <div class="overlay" id = "overlay">
         <div class = "prompt">
             <p class="message">Add new book</p>
-            <input type="text" required name = "book" placeholder="Book">
-            <input type="text" required name = "author" placeholder="Author">
-            <input type="number" required name = "year" placeholder="Year">
-            <input type="number" required name = "pages" placeholder="Pages">
+            <input type="text" required name = "book" id = "newBookTitle" placeholder="Book">
+            <input type="text" required name = "author" id = "newBookAuthor" placeholder="Author">
+            <input type="number" required name = "year" id = "newBookYear" placeholder="Year">
+            <input type="number" required name = "pages" id = "newBookPages" placeholder="Pages">
                 <label for="read" class="readStatus"> Have I read it?
-                    <input type="checkbox" required name = "read" placeholder="Read?">
+                    <input type="checkbox" required name = "read" id = "newBookReadStatus" placeholder="Read?">
                 </label>
-            <button class = "btn">Confirm</button>
+            <button class = "btn" id = "newBookConfirm">Confirm</button>
         </div>
     </div>
 
@@ -33,6 +33,13 @@
         const books = document.getElementById('books');
         const newBook = document.getElementById('newBook');
         const overlay = document.getElementById('overlay');
+        const newBookConfirm = document.getElementById('newBookConfirm');
+
+        const newBookTitle = document.getElementById('newBookTitle');
+        const newBookAuthor = document.getElementById('newBookAuthor');
+        const newBookYear = document.getElementById('newBookYear');
+        const newBookPages = document.getElementById('newBookPages');
+        const newBookReadStatus = document.getElementById('newBookReadStatus');
 
         newBook.addEventListener("click", () => {
             overlay.classList.toggle("active");
@@ -44,15 +51,23 @@
             }
         });
 
-        function Book(title, pages, year, read) {
+        newBookConfirm.addEventListener("click", (e) => {
+            let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, true)
+            myLibrary.push(newBook);
+            overlay.classList.toggle("active");
+            displayBookCards(myLibrary);
+        });
+
+        function Book(title, author, pages, year, read) {
             this.title = title;
+            this.author = author;
             this.pages = pages;
             this.year = year;
             this.read = read;
         };
 
-        let test1 = new Book('Lord of the Rings', 100, 2021, true);
-        let test2 = new Book('Twilight', 104, 1996, true);
+        let test1 = new Book('Lord of the Rings', 'J.R. Tolkien',100, 2021, true);
+        let test2 = new Book('Twilight', 'Stephenie Meyer',104, 1996, true);
 
         myLibrary.push(test1);
         myLibrary.push(test2);
