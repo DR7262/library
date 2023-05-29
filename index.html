@@ -15,17 +15,17 @@
     <div id="books">
     </div>
     <div class="overlay" id = "overlay">
-        <div class = "prompt">
+        <form class = "prompt">
             <p class="message">Add new book</p>
             <input type="text" required name = "book" id = "newBookTitle" placeholder="Book">
             <input type="text" required name = "author" id = "newBookAuthor" placeholder="Author">
             <input type="number" required name = "year" id = "newBookYear" placeholder="Year">
             <input type="number" required name = "pages" id = "newBookPages" placeholder="Pages">
                 <label for="read" class="readStatus"> Have I read it?
-                    <input type="checkbox" required name = "read" id = "newBookReadStatus" placeholder="Read?">
+                    <input type="checkbox" name = "read" id = "newBookReadStatus" placeholder="Read?">
                 </label>
-            <button class = "btn" id = "newBookConfirm">Confirm</button>
-        </div>
+            <button type="submit" class = "btn" id = "newBookConfirm">Confirm</button>
+        </form>
     </div>
 
     <script>
@@ -54,11 +54,14 @@
         });
 
         newBookConfirm.addEventListener("click", (e) => {
-            let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, true)
-            myLibrary.push(newBook);
-            overlay.classList.toggle("active");
-            displayBookCards(myLibrary);
-            clearNewBookForm();
+            if (checkFormValidity() === true) {
+                let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, true)
+                myLibrary.push(newBook);
+                overlay.classList.toggle("active");
+                displayBookCards(myLibrary);
+                clearNewBookForm();
+                event.preventDefault()
+            }
         });
 
         function Book(title, author, pages, year, read) {
@@ -105,6 +108,13 @@
             for (let i = 0; i < newBookData.length; i++) {
                 newBookData[i].value = '';
             }
+        }
+
+        function checkFormValidity() {
+            for (let i = 0; i < newBookData.length - 1; i++) {
+                if (newBookData[i].validity.valid == false) return false
+            }
+            return true;
         }
     </script>
 </body>
