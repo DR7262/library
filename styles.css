@@ -26,6 +26,11 @@ body {
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.378);
 }
 
+.secondary {
+    background-color: rgb(248, 242, 234);
+    outline: 1px solid blanchedalmond;
+}
+
 .btn:hover {
     background-color: rgb(253, 223, 177);
     scale: 102%;
@@ -46,6 +51,10 @@ body {
 .book {
     padding: 20px;
     border: 2px solid rgb(251, 210, 149);
+}
+
+.delBook {
+    width: 100%;
 }
 
 .overlay {

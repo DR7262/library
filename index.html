@@ -43,6 +43,8 @@
 
         const newBookData = [newBookTitle, newBookAuthor, newBookPages, newBookYear, newBookReadStatus]
 
+        var bookCount = 0
+
         newBook.addEventListener("click", () => {
             overlay.classList.toggle("active");
         });
@@ -52,6 +54,12 @@
                 overlay.classList.toggle("active");
             }
         });
+
+        document.querySelectorAll('.delBook').forEach(item => {
+            item.addEventListener('click', (e) => {
+                
+            })
+        })
 
         newBookConfirm.addEventListener("click", (e) => {
             if (checkFormValidity() === true) {
@@ -93,15 +101,32 @@
                 card.appendChild(info);
             }
 
+            let cancel = document.createElement('button');
+            cancel.classList.add('delBook');
+            cancel.classList.add('btn')
+            cancel.classList.add('secondary')
+            cancel.innerHTML = 'Delete'
+
+            card.appendChild(cancel);
+
+            card.dataset.bookNumber = bookCount;
+            bookCount++;
+
             return card;
         };
 
         function displayBookCards(currentLib) {
             books.innerHTML = ''
+            bookCount = 0;
             for (book in currentLib) {
                 currentCard = createBookCard(currentLib[book]);
                 books.appendChild(currentCard);
             }
+        }
+
+        function removeBookCard(bookIndex) {
+            del = myLibrary.splice(bookIndex, 1);
+            displayBookCards(myLibrary);
         }
 
         function clearNewBookForm() {
