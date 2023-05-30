@@ -98,7 +98,6 @@
                     card.dataset.read = book[prop];
                     let readStatusButton = document.createElement('button');
                     readStatusButton.classList.add('readToggleButton')
-                    readStatusButton.classList.add('btn');
                     readStatusButton.innerHTML = (book[prop] === true) ? 'Read' : 'Unread';
                     card.appendChild(readStatusButton);
                 } else {

@@ -83,12 +83,12 @@ body.dark {
     margin: 0px;
 }
 
-.book[data-read="true"] .readToggleButton {
-    background-color: rgb(144, 255, 104);
+.book[data-read="true"] {
+    --bookmark-readStatus-color: rgb(144, 255, 104);
 }
 
-.book[data-read="false"] .readToggleButton {
-    background-color: rgb(238, 238, 238);
+.book[data-read="false"] {
+    --bookmark-readStatus-color: rgb(238, 238, 238);
 }
 
 .delBook {
@@ -127,6 +127,45 @@ body.dark {
     width: 15px;
     rotate: 90deg;
     fill: var(--main-bg-color);
+}
+
+.readToggleButton {
+    border: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    border-top-right-radius: 2px;
+    top: 32px;
+    right: 28px;
+    rotate: 270deg;
+    height: 20px;
+    background-color: var(--bookmark-readStatus-color);
+    width: 90px;
+    transition-duration: .20s;
+}
+
+.readToggleButton::before {
+    position: relative;
+    right: 18px;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px var(--bookmark-readStatus-color) solid;
+    border-left: 10px transparent solid;
+    transition-duration: .20s;
+}
+
+.readToggleButton:hover {
+    width: 95px;
+    right: 26px;
+    top: 34.5px
+}
+
+.readToggleButtonIcon {
+    width: 15px;
+    rotate: 90deg;
+    fill: black;
 }
 
 .overlay {
