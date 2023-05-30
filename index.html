@@ -75,7 +75,7 @@
         };
 
         let test1 = new Book('Lord of the Rings', 'J.R. Tolkien',100, 2021, true);
-        let test2 = new Book('Twilight', 'Stephenie Meyer',104, 1996, true);
+        let test2 = new Book('Twilight', 'Stephenie Meyer',104, 1996, false);
 
         myLibrary.push(test1);
         myLibrary.push(test2);
@@ -87,12 +87,21 @@
             card.classList.add('book');
             
             for (prop in book) {
-                let info = document.createElement('p');
-                info.classList.add('info');
-                info.classList.add(prop);
-                info.textContent = book[prop];
+                if (prop === 'read') {
+                    card.dataset.read = book[prop];
+                    let readStatusButton = document.createElement('button');
+                    readStatusButton.classList.add('readToggleButton')
+                    readStatusButton.classList.add('btn');
+                    readStatusButton.innerHTML = (book[prop] === true) ? 'Read' : 'Unread';
+                    card.appendChild(readStatusButton);
+                } else {
+                    let info = document.createElement('p');
+                    info.classList.add('info');
+                    info.classList.add(prop);
+                    info.textContent = book[prop];
 
-                card.appendChild(info);
+                    card.appendChild(info);
+                }          
             }
 
             let cancel = document.createElement('button');
@@ -116,15 +125,25 @@
                 currentCard = createBookCard(currentLib[book]);
                 books.appendChild(currentCard);
             }
+            document.querySelectorAll('.readToggleButton').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.target.parentElement.dataset.read = (e.target.parentElement.dataset.read === 'true') ? false : true;
+                e.target.innerHTML = (e.target.parentElement.dataset.read === 'true') ? 'Read' : 'Unread';
+                })
+            })
             document.querySelectorAll('.delBook').forEach(item => {
             item.addEventListener('click', (e) => {
                 removeBookCard(e.target.parentElement.dataset.bookNumber)
+                })
             })
-        })
         }
 
-        function removeBookCard(bookIndex) {
-            del = myLibrary.splice(bookIndex, 1);
+        function toggleReadStatus(read) {
+            read = (read === true) ? false : true;
+        }
+
+        function removeBookCard(bookNumber) {
+            del = myLibrary.splice(bookNumber, 1);
             displayBookCards(myLibrary);
         }
 

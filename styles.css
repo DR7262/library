@@ -49,11 +49,27 @@ body {
 }
 
 .book {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     border: 2px solid rgb(251, 210, 149);
+    gap: 16px;
 }
 
-.delBook {
+.book p {
+    margin: 0px;
+}
+
+.book[data-read="true"] .readToggleButton {
+    background-color: rgb(144, 255, 104);
+}
+
+.book[data-read="false"] .readToggleButton {
+    background-color: rgb(238, 238, 238);
+}
+
+.delBook,
+.readToggleButton {
     width: 100%;
 }
 
