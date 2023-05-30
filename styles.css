@@ -18,7 +18,7 @@ body.dark {
 
 .header {
     position: sticky;
-    top: 0;
+    top: -20px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -26,6 +26,7 @@ body.dark {
     align-items: center;
     margin: 0;
     background-color: var(--main-bg-color);
+    z-index: 1;
 }
 
 .btn {
@@ -67,6 +68,7 @@ body.dark {
 }
 
 .book {
+    position: relative;
     color: var(--secondary-btn-color);
     display: flex;
     flex-direction: column;
@@ -74,7 +76,7 @@ body.dark {
     border-radius: 0px 9px;
     gap: 16px;
     background-color: var(--card-bg-color);
-    box-shadow: 2px 2px var(--main-bg-color), 0px 5px var(--card-bg-color), 4px 4px var(--card-bg-color);;
+    box-shadow: 2px 2px var(--main-bg-color), 0px 5px var(--card-bg-color), 4px 5px var(--card-bg-color);;
 }
 
 .book p {
@@ -89,9 +91,42 @@ body.dark {
     background-color: rgb(238, 238, 238);
 }
 
-.delBook,
-.readToggleButton {
-    width: 100%;
+.delBook {
+    border: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    border-top-right-radius: 2px;
+    top: 23px;
+    right: 1px;
+    rotate: 270deg;
+    height: 20px;
+    background-color: var(--accent-color);
+    width: 70px;
+    transition-duration: .20s;
+}
+
+.delBook::before {
+    position: relative;
+    right: 18px;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px var(--accent-color) solid;
+    border-left: 10px transparent solid;
+}
+
+.delBook:hover {
+    width: 75px;
+    right: -1.3px;
+    top: 26.2px
+}
+
+.delBookIcon {
+    width: 15px;
+    rotate: 90deg;
+    fill: var(--main-bg-color);
 }
 
 .overlay {
