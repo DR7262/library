@@ -57,7 +57,7 @@
 
         newBookConfirm.addEventListener("click", (e) => {
             if (checkFormValidity() === true) {
-                let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, true)
+                let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, newBookReadStatus.checked)
                 myLibrary.push(newBook);
                 overlay.classList.toggle("active");
                 displayBookCards(myLibrary);
@@ -136,10 +136,6 @@
                 removeBookCard(e.target.parentElement.dataset.bookNumber)
                 })
             })
-        }
-
-        function toggleReadStatus(read) {
-            read = (read === true) ? false : true;
         }
 
         function removeBookCard(bookNumber) {
