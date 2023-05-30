@@ -55,12 +55,6 @@
             }
         });
 
-        document.querySelectorAll('.delBook').forEach(item => {
-            item.addEventListener('click', (e) => {
-                
-            })
-        })
-
         newBookConfirm.addEventListener("click", (e) => {
             if (checkFormValidity() === true) {
                 let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookYear.value, true)
@@ -122,6 +116,11 @@
                 currentCard = createBookCard(currentLib[book]);
                 books.appendChild(currentCard);
             }
+            document.querySelectorAll('.delBook').forEach(item => {
+            item.addEventListener('click', (e) => {
+                removeBookCard(e.target.parentElement.dataset.bookNumber)
+            })
+        })
         }
 
         function removeBookCard(bookIndex) {
