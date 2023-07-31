@@ -66,12 +66,14 @@
             }
         });
 
-        function Book(title, author, pages, year, read) {
-            this.title = title;
-            this.author = author;
-            this.pages = pages + ' pages';
-            this.year = year;
-            this.read = read;
+        class Book {
+            constructor(title, author, pages, year, read) {
+                this.title = title;
+                this.author = author;
+                this.pages = pages + ' pages';
+                this.year = year;
+                this.read = read;
+            };
         };
 
         let test1 = new Book('Lord of the Rings', 'J.R. Tolkien',100, 2021, 'true');
